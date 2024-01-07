@@ -60,3 +60,38 @@ console.log(add(1, 2));
 console.log("Add one " + addOne(1));
 
 console.log("No arguments arroy function " + addRandom());
+
+
+
+
+/* Objects properties and methods */
+const person = {
+    name : 'Max',
+    age : 29,
+    greet(){
+        console.log('Hi I am ' + this.name);
+    }
+};
+
+person.greet();
+
+
+/* Arrays */
+
+const hobbies = ['hobbies', 'Cooking'];
+
+for (let hobby of hobbies){
+    console.log(hobby);
+}
+
+/* Map, a function to create a new array from another and modify its content if necessary */
+console.log(hobbies.map(hobby => {
+    return 'hobby: ' + hobby;
+})); //equal to hobby => 'hobby: ' + hobby
+console.log(hobbies);
+
+
+//In an array inside a const variable we can modify its content because it saves the pointer (adress) where it is saved in memory
+hobbies.push("programming");
+
+console.log(hobbies);
