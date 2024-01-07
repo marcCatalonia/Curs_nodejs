@@ -1,5 +1,5 @@
 const userName = 'Max';
-const age = 29;
+const trialAge = 29;
 const hasHobbies = true;
 
 
@@ -53,7 +53,7 @@ const addRandom = () => 1 + 2;
 
 
 
-console.log(summarizeUser(userName, age, hasHobbies));
+console.log(summarizeUser(userName, trialAge, hasHobbies));
 
 console.log(add(1, 2));
 
@@ -66,10 +66,10 @@ console.log("No arguments arroy function " + addRandom());
 
 /* Objects properties and methods */
 const person = {
-    name : 'Max',
-    age : 29,
+    ownName : 'Max',
+    ownAge : 29,
     greet(){
-        console.log('Hi I am ' + this.name);
+        console.log('Hi I am ' + this.ownName);
     }
 };
 
@@ -122,3 +122,24 @@ const toArray = (...args) => {
 
 console.log(toArray(1, 2, 3, 4)); //[1, 2, 3, 4]
 
+
+
+
+/* Object Destructuring */
+
+/* We pass as a parameter inside de {} the name of the property we want of the object */
+const printName = ({ownName}) =>{
+    console.log(ownName);
+}
+
+printName(person);
+
+//Object destructuring -> from the person object it gives the ownName and ownAge properties
+const {ownName, ownAge} = person;
+
+console.log(ownName, ownAge);
+
+
+/* Can to the same for arrays */
+const [hobby1, hobby2] = hobbies;
+console.log(hobby1);
