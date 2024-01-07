@@ -172,3 +172,6 @@ setTimeout(() => {
         console.log(text2);
     });
 }, 2000);
+
+
+/* String literals with backsticks `` to print string with variables `Hi i am ${name}` */
