@@ -95,3 +95,30 @@ console.log(hobbies);
 hobbies.push("programming");
 
 console.log(hobbies);
+
+
+
+/* Spread and Rest operators */
+
+/* Spread operator */
+const copiedArray = hobbies.slice();
+console.log(copiedArray);
+
+/* An alternative to that
+const copiedSecondArray = [...hobbies]; //the ... pulls out the content to void nested arrays
+console.log(copiedSecondArray);
+*/
+
+
+//Also to copy objects
+const copyPerson = {...person};
+console.log(copyPerson);
+
+
+/* Rest operator */
+const toArray = (...args) => {
+    return args;
+}
+
+console.log(toArray(1, 2, 3, 4)); //[1, 2, 3, 4]
+
