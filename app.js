@@ -1,6 +1,10 @@
 //Import the necessary modules for the server
 const http = require('http'); //With just the name it will import the module
 
+const fs = require('fs');
+
+
+
 
 //Create a new server
 //Arrow functin with two params request and response
@@ -11,6 +15,7 @@ const server = http.createServer((req, res) =>{
     //Response to particular Get calls
 
     const url = req.url;
+    const method = req.method;
 
     if(url === '/'){ // === means equally of type and value (string and /)
         res.setHeader('Content-type', 'text/html');
@@ -19,6 +24,15 @@ const server = http.createServer((req, res) =>{
         res.write('<body><form action="/message" method="POST"><input type="text" name="message"> <button type="submit">Send</button></form></body>');
         res.write('</html>');
         return res.end(); //the return is important to not show the lines outside these brackets 
+    }
+
+
+    //Make a redirection sing the statusCode and also de setHeader
+    if(url === '/message' && method === 'POST'){
+        fs.writeFileSync('message.txt', 'DUMMY');
+        res.statusCode = 302;
+        res.setHeader('Location', '/');
+        return res.end();
     }
     
 
