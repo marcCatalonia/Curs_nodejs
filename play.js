@@ -143,3 +143,32 @@ console.log(ownName, ownAge);
 /* Can to the same for arrays */
 const [hobby1, hobby2] = hobbies;
 console.log(hobby1);
+
+
+
+
+/* Promises */
+
+const fetchData = () => {
+    const promise = new Promise((resolve, reject) =>{
+        setTimeout(() => {
+            resolve("Done!");
+        }, 1500);
+    });
+
+    return promise;
+}
+
+
+
+setTimeout(() => {
+    console.log("Timer is done!");
+    fetchData()
+    .then(text =>{
+        console.log(text);
+        return fetchData();
+    })
+    .then(text2 => {
+        console.log(text2);
+    });
+}, 2000);
