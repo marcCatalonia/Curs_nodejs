@@ -29,6 +29,24 @@ const server = http.createServer((req, res) =>{
 
     //Make a redirection sing the statusCode and also de setHeader
     if(url === '/message' && method === 'POST'){
+        const body = [];
+        //Here we call the 'on' listener to receive all data. Data is received in chunks which will be saved in an array
+        //So we receive all stream of chuncks of data inside this listener of data
+        req.on('data', (chunck) =>{
+            body.push(chunck);
+            console.log(chunck);
+        });
+
+        //Will fire he end listener when the request has finished
+        req.on('end', () =>{
+            //Get all chuncks and packed togehter and converted to String
+            const parsedBody = Buffer.concat(body).toString();
+            const message = parsedBody.split("=")[1];
+            fs.writeFileSync('message.txt', message);
+            console.log(parsedBody);
+
+        });
+        
         fs.writeFileSync('message.txt', 'DUMMY');
         res.statusCode = 302;
         res.setHeader('Location', '/');
