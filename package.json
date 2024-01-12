@@ -1,0 +1,12 @@
+{
+  "name": "curs_nodejs",
+  "version": "1.0.0",
+  "description": "Curs Nodejs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Marc Purgimon",
+  "license": "ISC"
+}
