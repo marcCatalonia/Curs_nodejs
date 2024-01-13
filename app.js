@@ -8,28 +8,24 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+//Import route admin object
+const adminRoutes = require('./routes/admin');
+
+//Import route shop object
+const shopRoutes = require('./routes/shop');
+
+app.use(adminRoutes);
+app.use(shopRoutes);
+
 
 
 //Middleware to parse incoming data using third party library to do so
 //With this we get a Js Object this will only work for som data, not for Files and others
 app.use(bodyParser.urlencoded({extended: false}));
 
-//Function to handle request and response
-app.use('/add-product', (req, res, next)=>{
-    res.send('<form action="/product" method="POST"> <input type="text"name="title"> <button type="submit">Add product</button></form>');
-});
 
-//app.get() and a.post() for filtering those requests
-app.post('/product', (req, res, next) =>{
-    console.log(req.body);
-    res.redirect('/')
-});
 
-//Use works for all Http methods
-app.use('/', (req, res, next)=>{
-    res.send('<h1>Hello from Express.js!</h1>')
-    //next(); //Allows the request to continue to the next middleware
-});
+
 
 //Calls the create Server and listen
 app.listen(3000);
