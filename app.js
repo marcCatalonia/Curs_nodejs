@@ -14,7 +14,9 @@ const adminRoutes = require('./routes/admin');
 //Import route shop object
 const shopRoutes = require('./routes/shop');
 
-app.use(adminRoutes);
+
+//For segmented routes such '/admin/add-product' we can put the first segment (/admin) as first parameter of the function => app.use('/admin', adminRoutes);
+app.use('/admin/', adminRoutes);
 app.use(shopRoutes);
 
 
