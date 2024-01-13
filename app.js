@@ -6,16 +6,23 @@ const express = require('express');
 
 const app = express();
 
+
+app.use('/', (req, res, next) =>{
+    console.log('This always runs!');
+    next();
+})
+
 //Function to handle request and response
-app.use((req, res, next)=>{
-    console.log('In the middleware');
-    next(); //Allows the request to continue to the next middleware
+app.use('/add-product', (req, res, next)=>{
+    console.log('In another the middleware');
+    res.send('<h1>The add product Page!</h1>')
+    //next(); //Allows the request to continue to the next middleware
 });
 
-app.use((req, res, next)=>{
+app.use('/', (req, res, next)=>{
     console.log('In another the middleware');
     res.send('<h1>Hello from Express.js!</h1>')
-    next(); //Allows the request to continue to the next middleware
+    //next(); //Allows the request to continue to the next middleware
 });
 
 //Calls the create Server and listen
