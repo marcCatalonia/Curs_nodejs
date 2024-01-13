@@ -6,7 +6,7 @@ const router = express.Router();
 
 //Function to handle request and response
 router.get('/add-product', (req, res, next)=>{
-    res.send('<form action="/product" method="POST"> <input type="text"name="title"> <button type="submit">Add product</button></form>');
+    res.send('<form action="/admin/product" method="POST"> <input type="text"name="title"> <button type="submit">Add product</button></form>');
 });
 
 //app.get() and a.post() for filtering those requests
