@@ -19,6 +19,8 @@ const shopRoutes = require('./routes/shop');
 
 //For segmented routes such '/admin/add-product' we can put the first segment (/admin) as first parameter of the function => app.use('/admin', adminRoutes);
 app.use('/admin/', adminRoutes);
+//Express function to serve static files and allow the passed path to be public
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(shopRoutes);
 
 
