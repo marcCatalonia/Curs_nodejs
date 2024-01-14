@@ -22,7 +22,7 @@ const requestHandler = (req, res) => {
         //So we receive all stream of chuncks of data inside this listener of data
         req.on('data', (chunck) =>{
             body.push(chunck);
-            console.log(chunck);
+            //console.log(chunck);
         });
     
         //Will fire he end listener when the request has finished
@@ -37,7 +37,7 @@ const requestHandler = (req, res) => {
                 res.setHeader('Location', '/');
                 return res.end();
             });
-            console.log(parsedBody);
+            //console.log(parsedBody);
     
             
         

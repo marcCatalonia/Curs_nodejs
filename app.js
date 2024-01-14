@@ -11,14 +11,18 @@ const path = require('path');
 const app = express();
 
 //Import route admin object
-const adminRoutes = require('./routes/admin');
+const adminData = require('./routes/admin');
 
 //Import route shop object
 const shopRoutes = require('./routes/shop');
 
+//Middleware to parse incoming data using third party library to do so
+//With this we get a Js Object this will only work for som data, not for Files and others
+app.use(bodyParser.urlencoded({extended: false}));
 
-//For segmented routes such '/admin/add-product' we can put the first segment (/admin) as first parameter of the function => app.use('/admin', adminRoutes);
-app.use('/admin/', adminRoutes);
+
+//For segmented routes such '/admin/add-product' we can put the first segment (/admin) as first parameter of the function => app.use('/admin', adminData);
+app.use('/admin/', adminData.routers);
 //Express function to serve static files and allow the passed path to be public
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(shopRoutes);
@@ -31,9 +35,7 @@ app.use((req, res, next) =>{
 
 
 
-//Middleware to parse incoming data using third party library to do so
-//With this we get a Js Object this will only work for som data, not for Files and others
-app.use(bodyParser.urlencoded({extended: false}));
+
 
 
 
