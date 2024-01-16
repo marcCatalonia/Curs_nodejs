@@ -10,6 +10,12 @@ const path = require('path');
 
 const app = express();
 
+//Setting the default engine to pug through the express api
+app.set('view engine', 'pug');
+app.set('views', 'views');
+
+
+
 //Import route admin object
 const adminData = require('./routes/admin');
 

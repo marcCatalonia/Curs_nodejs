@@ -16,7 +16,8 @@ const adminData = require('./admin');
 //Use works for all Http methods
 router.get('/', (req, res, next)=>{
     console.log(adminData.products);
-    res.sendFile(path.join(rootDir, 'views', 'shop.html')); 
+    //res.sendFile(path.join(rootDir, 'views', 'shop.html'));
+    res.render('shop');
 });
 
 
