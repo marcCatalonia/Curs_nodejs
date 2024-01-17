@@ -14,7 +14,8 @@ const products = [];
 
 //Function to handle request and response
 router.get('/add-product', (req, res, next)=>{
-    res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
+    //res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
+    res.render('add-product', {pageTitle : 'Add Product'});
 });
 
 //app.get() and a.post() for filtering those requests
