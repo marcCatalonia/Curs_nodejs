@@ -1,6 +1,4 @@
-//Products array
-const products = [];
-
+const Product = require('../models/product'); //First Uppercase because we import a class
 
 exports.getAllProducts = (req, res, next)=>{
     res.render('add-product', {pageTitle : 'Add Product', path: '/admin/add-product'});
@@ -9,11 +7,14 @@ exports.getAllProducts = (req, res, next)=>{
 
 exports.postAddProduct = (req, res, next) =>{
     //console.log(req.body);
-    products.push({title : req.body.title});
+    //products.push({title : req.body.title});
+    const product = new Product(req.body.title);
+    product.save();
     res.redirect('/');
 };
 
 
 exports.getProducts = (req, res, next)=>{
+    const products = Product.fetchAll(); //call the static function to get all Products
     res.render('shop', {prods : products, pageTitle: 'Title', path : '/'});
 };
