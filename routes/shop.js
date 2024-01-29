@@ -3,23 +3,13 @@ const path = require('path');
 
 const express = require('express');
 
-const rootDir = require('../util/path');
+const productsController = require('../controllers/product');
 
 const router = express.Router();
 
 
-const adminData = require('./admin');
-
-
-
-
 //Use works for all Http methods
-router.get('/', (req, res, next)=>{
-    console.log(adminData.products);
-    const products = adminData.products;
-    //res.sendFile(path.join(rootDir, 'views', 'shop.html'));
-    res.render('shop', {prods : products, pageTitle: 'Title', path : '/'});
-});
+router.get('/', productsController.getProducts);
 
 
 module.exports = router;
