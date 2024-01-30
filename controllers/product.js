@@ -1,7 +1,7 @@
 const Product = require('../models/product'); //First Uppercase because we import a class
 
 exports.getAllProducts = (req, res, next)=>{
-    res.render('add-product', {pageTitle : 'Add Product', path: '/admin/add-product'});
+    res.render('admin/add-product', {pageTitle : 'Add Product', path: '/admin/add-product'});
 };
 
 
@@ -18,7 +18,7 @@ exports.getProducts = (req, res, next)=>{
     //We pass a function as parameter to be called back once it has the products
     Product.fetchAll((products) =>{
         //call the static function to get all Products
-        res.render('shop', {prods : products, pageTitle: 'Title', path : '/'});
+        res.render('shop/shop', {prods : products, pageTitle: 'Title', path : '/'});
     }); 
     
 };
