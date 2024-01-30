@@ -1,10 +1,20 @@
 const products = [];
 
 const fs = require("fs");
-//const path = require('path');
 
 const path = require("path");
 const localPath = require("../util/path");
+const p = path.join(localPath, "data", "products.json");
+
+const getProductsFromFile = cb => {
+    
+    fs.readFile(p, (err, fileContent) =>{
+        if(err){
+            cb([]);
+        }
+        cb(JSON.parse(fileContent));
+    });
+};
 
 module.exports = class Product {
   constructor(t) {
@@ -12,30 +22,15 @@ module.exports = class Product {
   }
 
   save() {
-    const p = path.join(localPath, "data", "products.json");
-    fs.readFile(p, (err, fileContent) => {
-        let products = [];
-        if(!err) { //If err is null
-            products = JSON.parse(fileContent);
-
-        }
+    getProductsFromFile(products => {
         products.push(this);
         fs.writeFile(p, JSON.stringify(products), (err) =>{
             console.log(err);
         });
-    });
-    //products.push(this); //This refers to the Products instance of the class
+    });   
   }
 
   static fetchAll(cb) {
-    const p = path.join(localPath, "data", "products.json");
-    fs.readFile(p, (err, fileContent) =>{
-        if(err){
-            cb([]);
-        }
-        cb(JSON.parse(fileContent));
-    });
-    //static to call this function directly to the class not trhough an instance
-    return products;
+    getProductsFromFile(cb);
   }
 };
