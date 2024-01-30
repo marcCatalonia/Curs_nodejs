@@ -15,6 +15,10 @@ exports.postAddProduct = (req, res, next) =>{
 
 
 exports.getProducts = (req, res, next)=>{
-    const products = Product.fetchAll(); //call the static function to get all Products
-    res.render('shop', {prods : products, pageTitle: 'Title', path : '/'});
+    //We pass a function as parameter to be called back once it has the products
+    Product.fetchAll((products) =>{
+        //call the static function to get all Products
+        res.render('shop', {prods : products, pageTitle: 'Title', path : '/'});
+    }); 
+    
 };
