@@ -15,7 +15,12 @@ exports.getProducts = (req, res, next)=>{
 exports.getProduct = (req, res, next) =>{
     //Name of the varibale in the Route js object (/products/:productId)
     const prodId = req.params.productId;
-    console.log(prodId);
+    //console.log(prodId);
+
+    //Call static method inside Product class passsing y param the id we are looking for and the callback function with the product we will receive
+    Product.findById(prodId, product =>{
+        console.log(product);
+    });
     res.redirect('/');
 };
 
