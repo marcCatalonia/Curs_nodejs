@@ -12,6 +12,13 @@ exports.getProducts = (req, res, next)=>{
     
 };
 
+exports.getProduct = (req, res, next) =>{
+    //Name of the varibale in the Route js object (/products/:productId)
+    const prodId = req.params.productId;
+    console.log(prodId);
+    res.redirect('/');
+};
+
 exports.getIndex = (req, res, next) =>{
     //We pass a function as parameter to be called back once it has the products
     Product.fetchAll((products) =>{
