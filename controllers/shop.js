@@ -20,8 +20,9 @@ exports.getProduct = (req, res, next) =>{
     //Call static method inside Product class passsing y param the id we are looking for and the callback function with the product we will receive
     Product.findById(prodId, product =>{
         console.log(product);
+        res.render('shop/product-detail', {product : product});
     });
-    res.redirect('/');
+    //res.redirect('/');
 };
 
 exports.getIndex = (req, res, next) =>{
