@@ -1,4 +1,5 @@
 const Product = require('../models/product'); //First Uppercase because we import a class
+const Cart = require('../models/cart'); 
 
 
 
@@ -43,7 +44,12 @@ exports.getCart = (req, res, next) =>{
 
 exports.postCart = (req, res, next) =>{
     //productId is the name in the name attribute of the input
-    const prodId = req.body.productId; 
+    const prodId = req.body.productId;
+    Product.findById(prodId, (product) =>{
+
+        //console.log(product);
+        Cart.addProduct(prodId, product.price);
+    });
     console.log(prodId);
     res.redirect('/cart');
 };
