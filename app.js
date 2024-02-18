@@ -22,7 +22,7 @@ const _404Controller = require('../Curs_nodejs/controllers/404');
     partialsDir: path.join(app.get('views'), 'Partials'),
     extname: '.handlebars'
 })); */
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 
